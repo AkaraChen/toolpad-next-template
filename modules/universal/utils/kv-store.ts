@@ -1,4 +1,4 @@
-import { DATA_STORE_PATH } from '@/modules/universal/constants/store'
+import { STORAGE } from '@/modules/universal/constants/store'
 import { DataModel } from '@toolpad/core'
 
 interface IKvStore {
@@ -60,6 +60,6 @@ class KvStore implements IKvStore {
     }
 }
 
-const GLOBAL_STORE = new KvStore(DATA_STORE_PATH)
+const GLOBAL_STORE = new KvStore(STORAGE.APP_STATE_STORAGE_KEY)
 
 export default GLOBAL_STORE
