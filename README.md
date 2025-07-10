@@ -15,6 +15,11 @@ This project is a modern, scalable web application built with a strong emphasis 
 
 ## Development Conventions
 
+### File Naming Convention
+
+-   All filenames must use **kebab-case** (e.g., `my-component.tsx`, `api-client.ts`).
+-   This ensures consistency and improves readability across the project.
+
 ### Asynchronous Operations
 
 -   All asynchronous operations within components, such as data fetching, must be managed using **TanStack Query** by default.

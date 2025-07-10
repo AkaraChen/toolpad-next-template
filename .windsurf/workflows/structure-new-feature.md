@@ -6,6 +6,11 @@ description: How to Add a New Feature
 
 This guide outlines the steps to add a new feature to the project, adhering to its modular architecture. Following these conventions is crucial for maintaining a clean and scalable codebase.
 
+### Important: File Naming Convention
+
+-   All filenames must use **kebab-case** (e.g., `my-component.tsx`, `api-client.ts`).
+-   This ensures consistency and improves readability across the project.
+
 ## Step 1: Create the Feature Module
 
 All features are encapsulated within their own directories in the `modules` folder. Start by creating a new directory for your feature.
@@ -67,6 +72,25 @@ To make your feature accessible, create a corresponding route in the `app` direc
 
 2.  Inside this directory, create a `page.tsx` file. This file should be a lightweight wrapper that does nothing more than import and render your main feature component.
 
+3.  Create a `layout.tsx` file to ensure a consistent layout with the rest of the application. You can copy the contents of `app/(home)/layout.tsx` as a starting point.
+
+    **File Path:** `app/<feature-name>/layout.tsx`
+
+    ```tsx
+    // app/<feature-name>/layout.tsx
+    import * as React from 'react'
+    import { DashboardLayout } from '@toolpad/core/DashboardLayout'
+    import { PageContainer } from '@toolpad/core'
+
+    export default function Layout(props: { children: React.ReactNode }) {
+        return (
+            <DashboardLayout>
+                <PageContainer>{props.children}</PageContainer>
+            </DashboardLayout>
+        )
+    }
+    ```
+
     **File Path:** `app/<feature-name>/page.tsx`
 
     ```tsx
@@ -89,6 +113,6 @@ For any code that can be shared across multiple features, use the `universal` mo
 
 ## Step 6: Add Navigation
 
-Finally, add a link to your new feature in the main application navigation (e.g., in the sidebar or header) to make it discoverable to users.
+Finally, add a link to your new feature in the main application navigation to make it discoverable to users. This is done by adding a new entry to the `NAVIGATION` array in `app/layout.tsx`.
 
 By following these steps, you will integrate your new feature cleanly and consistently with the existing project architecture.
