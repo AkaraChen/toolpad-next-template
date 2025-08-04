@@ -30,34 +30,38 @@ This project is a modern, scalable web application built with a strong emphasis 
 
 ### Modular Architecture
 
-The project follows a modular architecture, with distinct features encapsulated in their own directories under `src/modules`. This approach promotes a strong separation of concerns, making the codebase easier to manage, scale, and debug.
+The project follows a modular architecture, with distinct features encapsulated in their own directories under `modules`. This approach promotes a strong separation of concerns, making the codebase easier to manage, scale, and debug.
 
-A key component of this architecture is the `src/shared` module, which contains code used across multiple features. This includes:
+A key component of this architecture is the `shared` module, which contains code used across multiple features. This includes:
 
 -   **`constants`**: For application-wide constants like API endpoints and configuration keys.
 -   **`store`**: For global state management using Zustand.
 -   **`hooks`**: For reusable React hooks.
 -   **`utils`**: For shared utility functions.
 
+**Special Convention: The `shared` Directory**
+
+The `shared` directory is a special convention in this architecture. While it follows the same organizational patterns and conventions as other modules within the `modules` folder, it is intentionally placed at the root level of the project. This placement reflects its foundational role - the `shared` module serves as the base layer that all other feature modules depend upon. By positioning it at the root level, we emphasize its cross-cutting nature and make it easily accessible to all parts of the application.
+
 This modular design results in a clean and organized codebase where each module is responsible for a specific domain of functionality.
 
 ### App Directory and Routing
 
-The `src/app` directory is structured according to the **Next.js App Router** convention. The pages and layouts within this directory serve as lightweight wrappers. Their primary responsibility is to import and render the main components from their corresponding feature modules located in `src/modules`.
+The `app` directory is structured according to the **Next.js App Router** convention. The pages and layouts within this directory serve as lightweight wrappers. Their primary responsibility is to import and render the main components from their corresponding feature modules located in `modules`.
 
 This architectural choice reinforces modularity by:
 
 -   **Separating Concerns**: Routing and page setup are handled in the `app` directory, while the core business logic, state, and UI are encapsulated within the `modules`.
 -   **Enhancing Reusability**: Feature components in `modules` are self-contained and can be easily used or moved without being tightly coupled to the routing structure.
 
-For example, `src/app/feature-name/page.tsx` would be a simple file that imports and renders the main component from `src/modules/feature-name/`. All logic for that feature resides within its module.
+For example, `app/feature-name/page.tsx` would be a simple file that imports and renders the main component from `modules/feature-name/`. All logic for that feature resides within its module.
 
 ### Feature Modules
 
-Each feature of the application is housed in its own directory within `src/modules`. A typical feature module structure might look like this:
+Each feature of the application is housed in its own directory within `modules`. A typical feature module structure might look like this:
 
 ```
-src/modules/feature-name/
+modules/feature-name/
 ├── api/
 │   ├── client.ts   # Client-side data fetching functions (using TanStack Query)
 │   ├── server.ts   # Server-side logic (e.g., API route handlers, server actions)

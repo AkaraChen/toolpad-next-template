@@ -102,14 +102,16 @@ To make your feature accessible, create a corresponding route in the `app` direc
     }
     ```
 
-## Step 5: Leverage the `universal` Module
+## Step 5: Leverage the `shared` Module
 
-For any code that can be shared across multiple features, use the `universal` module:
+For any code that can be shared across multiple features, use the `shared` module:
 
-- **Global State:** Use the Zustand store from `modules/universal/store`.
-- **Shared Hooks:** Add to and use hooks from `modules/universal/hooks`.
-- **Shared Utilities:** Use helpers from `modules/universal/utils`.
-- **Global Constants:** Define and use constants from `modules/universal/constants`.
+- **Global State:** Use the Zustand store from `shared/store`.
+- **Shared Hooks:** Add to and use hooks from `shared/hooks`.
+- **Shared Utilities:** Use helpers from `shared/utils`.
+- **Global Constants:** Define and use constants from `shared/constants`.
+
+**Note:** The `shared` directory follows the same organizational conventions as feature modules within the `modules` folder, but it is intentionally placed at the root level of the project. This placement reflects its foundational role - it serves as the base layer that all other feature modules depend upon, making it easily accessible throughout the application.
 
 ## Step 6: Add Navigation
 
