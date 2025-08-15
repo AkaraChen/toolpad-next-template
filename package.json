@@ -28,6 +28,7 @@
         "zustand": "^5.0.6"
     },
     "devDependencies": {
+        "@intellectronica/ruler": "^0.2.19",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
